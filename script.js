@@ -71,7 +71,27 @@ Highcharts.chart('container2', {
       //color: '#FAA74B',
       y: 1.1
     }]
-  }]
+  }],
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 273
+      },
+      chartOptions: {
+
+        // Config for max-width 375 devices (bar chart width is 273 on my page)
+      }
+    },
+    {
+      condition: {
+        maxWidth: 312
+      },
+      chartOptions: {
+
+        // Config for max-width 420 devices (bar chart width is 312 on my page)
+      }
+    }]
+  }
 });
 
 Highcharts.setOptions({
