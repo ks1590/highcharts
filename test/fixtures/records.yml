@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dashboard: one
+  categoriy: one
+  payments: one
+
+two:
+  dashboard: two
+  categoriy: two
+  payments: two

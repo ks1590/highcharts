@@ -10,9 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_02_23_075358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dashboards", force: :cascade do |t|
+    t.date "date", null: false
+    t.float "amount", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.bigint "dashboard_id"
+    t.bigint "category_id"
+    t.bigint "payment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_records_on_category_id"
+    t.index ["dashboard_id"], name: "index_records_on_dashboard_id"
+    t.index ["payment_id"], name: "index_records_on_payment_id"
+  end
+
+  add_foreign_key "records", "categories"
+  add_foreign_key "records", "dashboards"
+  add_foreign_key "records", "payments"
 end
